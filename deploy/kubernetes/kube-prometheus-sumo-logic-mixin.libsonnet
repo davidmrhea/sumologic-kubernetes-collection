@@ -36,7 +36,7 @@
         writeRelabelConfigs: [
           {
             action: "keep",
-            regex: "kube-scheduler;scheduler_(?:e2e_scheduling|binding|scheduling_algorithm)_latency_microseconds.*",
+            regex: "kube-scheduler;scheduler_(?:e2e_scheduling|binding|scheduling_algorithm)_(?:duration_seconds|latency_microseconds).*",
             sourceLabels: [
               "job",
               "__name__"

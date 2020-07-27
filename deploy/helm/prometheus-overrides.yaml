@@ -207,7 +207,7 @@ prometheus:
       # scheduler_e2e_scheduling_latency_microseconds
       # scheduler_e2e_scheduling_latency_microseconds_bucket
       # scheduler_e2e_scheduling_latency_microseconds_count
-      # scheduler_binding_latency_microseconds
+      # scheduler_binding_duration_seconds
       # scheduler_binding_latency_microseconds_bucket
       # scheduler_binding_latency_microseconds_count
       # scheduler_scheduling_algorithm_latency_microseconds
@@ -216,7 +216,7 @@ prometheus:
       - url: http://$(CHART).$(NAMESPACE).svc.cluster.local:9888/prometheus.metrics.scheduler
         writeRelabelConfigs:
           - action: keep
-            regex: kube-scheduler;scheduler_(?:e2e_scheduling|binding|scheduling_algorithm)_latency_microseconds.*
+            regex: kube-scheduler;scheduler_(?:e2e_scheduling|binding|scheduling_algorithm)_(?:duration_seconds|latency_microseconds).*
             sourceLabels: [job, __name__]
       # api server metrics:
       # apiserver_request_count
